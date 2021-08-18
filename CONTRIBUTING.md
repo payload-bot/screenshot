@@ -42,23 +42,26 @@ yarn
 yarn dev
 ```
 
+> To debug, you may use the `yarn debug` command.
+
 Your dev application will be available on `http://localhost:8080`
 
 That's it! 🎉
 
 #### Testing
 
-Starting out, tests will be scarce. We intend to add tests in the future for all hooks and custom components.
+All accompying code should have unit tests for services and e2e tests for features. These should be included in the PR.
 
 ## For maintainers
 
-Releases will be auto-published via Vercel to sites. For versioning, please study the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0) site to understand how to write a good commit message. We also use semver for versioning, and we try to keep up with this in the package.json file.
+Releases will be auto-published on github releases. For versioning, please study the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0) site to understand how to write a good commit message. We also use semver for versioning, and we try to keep up with this in the package.json file.
 
 When accepting Pull Requests, make sure the following:
 
-- Make sure you merge contributor PRs into `dev`.
+- Make sure you merge contributor PRs into `main`.
 - Rewrite the commit message to conform to the `Conventional Commits` style. Check the "Recommended Scopes" section for further advice.
 - Optionally link issues the PR will resolve (You can add "close" in front of the issue numbers to close the issues automatically, when the PR is merged).
+- Wrote tests with your accompanying Pull Request.
 
 ### Recommended Scopes
 
@@ -74,7 +77,7 @@ Scope is the part that will help grouping the different commit types in the rele
 
 Some recommended scopes are:
 
-- **docs** - Documentation or github-related commits (eg.: "feat(docs): Add CONTRIBUTING", "chore(docs): Fix README"
+- **docs** - Documentation or github-related commits (eg.: "feat(docs): add CONTRIBUTING", "chore(docs): Fix README"
 - **deps** - Adding/removing/updating a dependency (eg.: "chore(deps): add X")
 
 This is not an exhaustive list, so if you feel a commit is suited for a specific scope, feel free to add that scope.
