@@ -1,20 +1,20 @@
 <p align="center">
   <a href="https://payload.tf">
-    <img src="https://payload.tf/img/logo.svg" alt="payload.tf logo" width="175" height="175">
+    <img src="https://payload.tf/logo.svg" alt="payload.tf logo" width="175" height="175">
   </a>
 </p>
 
 <h1 align="center">screenshot</h1>
 
-<p align="center">Screenshot service to help take screenshots of various sites.</p>
+<p align="center">Screenshotting popular TF2 services</p>
 
 <p align="center">
-    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT license">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT license" />
 </p>
 
 # Description
 
-screenshot is a service that will allow communication via REST to generate screenshots of sites, and cache them.
+This project is split out from Payload and is intended to provide a set of APIs and methods to screenshot popular TF2 websites.
 
 # Issues, Questions
 
@@ -26,7 +26,14 @@ You may back me on my [Patreon](https://www.patreon.com/c43721). Direct sponsors
 
 # Contributing
 
-Before contributing, please make sure no one else has stated against your proposal. Otherwise, make a Pull Request detailing your proposal and any relevant code changes. If you are committing code, try to create test cases, as going foward we'd like to have stable tests. Also, you should take a look at our [Contributing guide](CONTRIBUTING)
+Before contributing, please make sure no one else has stated against your proposal. Otherwise, make a Pull Request detailing your proposal and any relevant code changes. If you are committing code, try to create test cases, as going foward we'd like to have stable tests.
+
+# Useful Links
+
+- [Main Page](https://payload.tf/)
+- [Invite](https://payload.tf/invite)
+- [Discord](https://payload.tf/discord)
+- [Translation](https://crowdin.com/project/payload)
 
 # License
 

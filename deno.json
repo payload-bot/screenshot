@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "dev": "deno run --watch main.ts",
+    "test": "deno test -A"
+  },
+  "imports": {},
+  "compilerOptions": {
+    "lib": ["deno.window", "dom"]
+  }
+}
