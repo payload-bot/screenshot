@@ -34,3 +34,17 @@ Deno.serve(async (req) => {
     },
   });
 });
+
+Deno.addSignalListener("SIGINT", async () => {
+  await removeBrowser();
+
+  Deno.exit();
+});
+
+async function removeBrowser() {
+  console.info("closing browser");
+
+  if (!browser?.closed) {
+    await browser.close();
+  }
+}
