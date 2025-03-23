@@ -1,10 +1,14 @@
 {
   "tasks": {
-    "dev": "deno run --watch main.ts",
+    "dev": "OTEL_DENO=true OTEL_SERVICE_NAME=screenshot_dev deno --unstable-otel -A --watch main.ts",
+    "prod": "OTEL_DENO=true OTEL_SERVICE_NAME=screenshot deno --unstable-otel -N main.ts",
     "test": "deno test -A"
   },
   "imports": {},
   "compilerOptions": {
-    "lib": ["deno.window", "dom"]
+    "lib": ["deno.window", "dom"],
+    "strict": true,
+    "strictNullChecks": true,
+    "exactOptionalPropertyTypes": true
   }
 }
