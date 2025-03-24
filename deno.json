@@ -4,7 +4,9 @@
     "prod": "OTEL_DENO=true OTEL_SERVICE_NAME=screenshot deno --unstable-otel -N main.ts",
     "test": "deno test -A"
   },
-  "imports": {},
+  "imports": {
+    "arktype": "npm:arktype@^2.1.10"
+  },
   "compilerOptions": {
     "lib": ["deno.window", "dom"],
     "strict": true,

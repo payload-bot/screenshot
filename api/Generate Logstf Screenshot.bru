@@ -1,0 +1,17 @@
+meta {
+  name: Generate Logstf Screenshot
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8000/v1/logstf
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "url": "https://logs.tf/3691898"
+  }
+}

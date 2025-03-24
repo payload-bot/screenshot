@@ -90,6 +90,7 @@ export async function capturePage(
   url: string,
   options: CaptureOptions = { left: 0, top: 0 },
 ): Promise<Uint8Array> {
+  console.info(`creating page for ${url}`);
   const page = await createPage(url);
 
   let styles;
@@ -99,6 +100,7 @@ export async function capturePage(
 
   try {
     if (styles) {
+      console.debug("inserting styles");
       await page.evaluate(async (styles) => {
         const style = document.createElement("style");
         style.appendChild(document.createTextNode(styles));
@@ -132,12 +134,13 @@ export async function capturePage(
       format: "webp",
     });
 
+    console.info("done");
     return screenshotBuffer;
   } catch (e) {
     console.error(e);
     throw e;
   } finally {
-    page.close();
+    await page.close();
   }
 }
 
@@ -151,11 +154,12 @@ export async function captureSelector(url: string, selector: string) {
 
     const screenshot = await element.screenshot({ format: "webp" });
 
+    console.info("done");
     return screenshot;
   } catch (e) {
     console.error(e);
     throw e;
   } finally {
-    page.close();
+    await page.close();
   }
 }
