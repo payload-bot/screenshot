@@ -15,7 +15,7 @@ Deno.serve(async (req) => {
     return await logstfRoute(req);
   }
 
-  return new Response("TEST", {});
+  return Response.json({ message: "ok" }, {});
 });
 
 Deno.addSignalListener("SIGINT", async () => {

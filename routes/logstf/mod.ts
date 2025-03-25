@@ -8,20 +8,22 @@ export default async function logstfRoute(req: Request) {
   const out = logsBody(await req.json());
 
   if (out instanceof type.errors) {
-    return new Response(
-      JSON.stringify({
-        message: out.summary,
-      }),
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        status: 400,
-      },
-    );
+    return Response.json({
+      message: out.summary,
+    }, {
+      status: 400,
+    });
   }
 
-  const screenshotBuffer = await capturePage(out.url, {
+  if (out.url.origin !== "https://logs.tf") {
+    return Response.json({
+      message: "Invalid url",
+    }, {
+      status: 400,
+    });
+  }
+
+  const screenshotBuffer = await capturePage(out.url.toString(), {
     top: {
       selector: "#log-header",
       edge: "top",
