@@ -1,0 +1,5 @@
+fly.toml
+.env
+api/
+.vscode/
+.github/

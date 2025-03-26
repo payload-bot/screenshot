@@ -1,0 +1,12 @@
+app = 'payload-screenshot'
+primary_region = 'ord'
+
+[env]
+  OTEL_DENO = true
+  OTEL_SERVICE_NAME = 'screenshot'
+
+[processes]
+  app = 'deno task prod'
+
+[[vm]]
+  size = 'shared-cpu-1x'
