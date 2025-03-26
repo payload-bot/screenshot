@@ -32,6 +32,7 @@ export async function capturePage(
     }
 
     if (options.waitFor) {
+      console.debug("waiting for selectors");
       if (Array.isArray(options.waitFor)) {
         await Promise.all(
           options.waitFor.map((selector) => page.waitForSelector(selector)),
@@ -49,12 +50,13 @@ export async function capturePage(
       format: "webp",
     });
 
-    console.info("done");
+    console.debug("done");
     return screenshotBuffer;
   } catch (e) {
     console.error(e);
     throw e;
   } finally {
+    console.debug("closing page");
     await page.close();
   }
 }

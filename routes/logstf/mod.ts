@@ -4,6 +4,8 @@ import { capturePage } from "../../lib/mod.ts";
 
 const logsCssPath = await Deno.realPath("./logs.css");
 
+const logsTfUrl = "https://logs.tf";
+
 export default async function logstfRoute(req: Request) {
   const out = logsBody(await req.json());
 
@@ -15,9 +17,23 @@ export default async function logstfRoute(req: Request) {
     });
   }
 
-  if (out.url.origin !== "https://logs.tf") {
+  if (out.url.origin !== logsTfUrl) {
     return Response.json({
-      message: "Invalid url",
+      message: "Invalid log url",
+    }, {
+      status: 400,
+    });
+  }
+
+  const logIdString = out.url.toString()
+    .substring(logsTfUrl.length + 1)
+    .trim();
+
+  const logId = Number(logIdString);
+
+  if (isNaN(logId) && !isFinite(logId)) {
+    return Response.json({
+      message: "Invalid log url",
     }, {
       status: 400,
     });
