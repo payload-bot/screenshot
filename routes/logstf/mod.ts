@@ -25,10 +25,7 @@ export default async function logstfRoute(req: Request) {
     });
   }
 
-  const logIdString = out.url.toString()
-    .substring(logsTfUrl.length + 1)
-    .trim();
-
+  const logIdString = out.url.pathname.slice(1).trim();
   const logId = Number(logIdString);
 
   if (isNaN(logId) && !isFinite(logId)) {
@@ -39,7 +36,7 @@ export default async function logstfRoute(req: Request) {
     });
   }
 
-  const screenshotBuffer = await capturePage(out.url.toString(), {
+  const screenshotBuffer = await capturePage(out.url.href, {
     top: {
       selector: "#log-header",
       edge: "top",
