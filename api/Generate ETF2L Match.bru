@@ -1,0 +1,17 @@
+meta {
+  name: Generate ETF2L Match
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://localhost:8000/v0/etf2l/matches
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "url": "https://api-v2.etf2l.org/matches/15644"
+  }
+}

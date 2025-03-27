@@ -1,5 +1,5 @@
 import { type } from "arktype";
 
-export const logsBody = type({
+export const urlBody = type({
   url: "string.url.parse",
 });

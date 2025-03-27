@@ -60,10 +60,7 @@ export async function createOrConnectChrome() {
 }
 
 export async function createPage(url: string) {
-  const page = await browser!.newPage();
-  await page.goto(url);
+  const page = await browser!.newPage(url);
 
   return page;
 }
-
-

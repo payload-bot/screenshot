@@ -1,0 +1,17 @@
+meta {
+  name: Generate RGL Teams
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8000/v0/rgl/teams
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "url": "https://rgl.gg/Public/Team.aspx?t=10537&r=24"
+  }
+}

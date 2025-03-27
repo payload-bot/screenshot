@@ -77,6 +77,7 @@ export async function captureSelector(url: string, selector: string) {
     console.error(e);
     throw e;
   } finally {
+    console.debug("closing page");
     await page.close();
   }
 }

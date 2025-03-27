@@ -1,23 +1,11 @@
-import { type } from "arktype";
-import { logsBody } from "./types.ts";
 import { capturePage } from "../../lib/mod.ts";
 
 const logsCssPath = await Deno.realPath("./logs.css");
 
-const logsTfUrl = "https://logs.tf";
+const logsTfHost = "logs.tf";
 
-export default async function logstfRoute(req: Request) {
-  const out = logsBody(await req.json());
-
-  if (out instanceof type.errors) {
-    return Response.json({
-      message: out.summary,
-    }, {
-      status: 400,
-    });
-  }
-
-  if (out.url.origin !== logsTfUrl) {
+export default async function logstfRoute(url: URL) {
+  if (url.host !== logsTfHost) {
     return Response.json({
       message: "Invalid log url",
     }, {
@@ -25,7 +13,7 @@ export default async function logstfRoute(req: Request) {
     });
   }
 
-  const logIdString = out.url.pathname.slice(1).trim();
+  const logIdString = url.pathname.slice(1).trim();
   const logId = Number(logIdString);
 
   if (isNaN(logId) && !isFinite(logId)) {
@@ -36,7 +24,7 @@ export default async function logstfRoute(req: Request) {
     });
   }
 
-  const screenshotBuffer = await capturePage(out.url.href, {
+  const screenshotBuffer = await capturePage(url.href, {
     top: {
       selector: "#log-header",
       edge: "top",

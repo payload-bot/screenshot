@@ -1,0 +1,17 @@
+meta {
+  name: Generate ETF2L Team
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:8000/v1/etf2l/teams
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "url": "https://etf2l.org/teams/32593"
+  }
+}
