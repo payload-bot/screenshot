@@ -1,11 +1,13 @@
-FROM denoland/deno:2.2.5
+FROM denoland/deno:alpine as builder
 
 WORKDIR /app
-
-USER deno
-
 COPY . .
 
-RUN deno install
+RUN deno cache main.ts
+
+FROM denoland/deno:alpine
+
+WORKDIR /app
+COPY --from=builder /app .
 
 CMD ["deno", "task", "prod"]
