@@ -18,6 +18,4 @@ FROM builder
 
 WORKDIR /app
 
-USER deno
-
 CMD ["deno", "task", "prod"]
