@@ -1,8 +1,10 @@
 import { launch, Page } from "astral";
 import { CaptureOptions } from "./screenshotTypes.ts";
 
+const shouldRunHeadless = Deno.env.get("HEADLESS") === "true"
+
 const browser = await launch({
-  headless: false,
+  headless: shouldRunHeadless,
   userAgent: "Screenshot Service | payload.tf 0.1.0",
 });
 

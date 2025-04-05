@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "dev": "OTEL_DENO=true OTEL_SERVICE_NAME=screenshot_dev deno --unstable-otel -A --watch main.ts",
+    "dev": "OTEL_DENO=true OTEL_SERVICE_NAME=screenshot_dev deno --unstable-otel -A --watch --env-file=.env main.ts",
     "prod": "deno --unstable-otel --allow-run -NWRE main.ts",
     "test": "deno test -A"
   },
