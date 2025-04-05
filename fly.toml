@@ -1,5 +1,7 @@
 app = 'payload-screenshot'
 primary_region = 'ord'
+kill_timeout = 15
+swap_size_mb = 128
 
 [env]
   HEADLESS = "true"
@@ -11,3 +13,4 @@ primary_region = 'ord'
 
 [[vm]]
   size = 'shared-cpu-1x'
+  memory = "256mb"
