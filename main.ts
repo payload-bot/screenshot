@@ -1,15 +1,9 @@
-import { Browser } from "astral";
-import { createOrConnectChrome } from "./lib/screenshot.ts";
 import logstfRoute from "./routes/logstf/mod.ts";
 import { urlBody } from "./lib/types.ts";
 import { type } from "arktype";
 import etf2lMatchesRoute from "./routes/etf2l-matches/mod.ts";
 import rglTeamRoute from "./routes/rgl/mod.ts";
 import etf2lTeamRoute from "./routes/etf2l/mod.ts";
-
-// deno-lint-ignore prefer-const
-let browser: Browser;
-browser ??= await createOrConnectChrome();
 
 const logsRoutePattern = new URLPattern({ pathname: "/v0/logstf" });
 const etf2lTeamRoutePattern = new URLPattern({ pathname: "/v0/etf2l/teams" });
@@ -47,17 +41,3 @@ Deno.serve(async (req) => {
 
   return Response.json({ message: "ok" }, {});
 });
-
-Deno.addSignalListener("SIGINT", async () => {
-  await removeBrowser();
-
-  Deno.exit();
-});
-
-async function removeBrowser() {
-  console.info("closing browser");
-
-  if (!browser?.closed) {
-    await browser.close();
-  }
-}

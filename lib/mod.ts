@@ -6,7 +6,8 @@ export async function capturePage(
   options: CaptureOptions = { left: 0, top: 0 },
 ): Promise<Uint8Array> {
   console.info(`creating page for ${url}`);
-  const page = await createPage(url);
+
+  await using page = await createPage(url);
 
   let styles;
   if (options.cssPath) {
@@ -16,6 +17,7 @@ export async function capturePage(
   try {
     if (styles) {
       console.debug("inserting styles");
+
       await page.evaluate(async (styles) => {
         const style = document.createElement("style");
         style.appendChild(document.createTextNode(styles));
@@ -55,14 +57,11 @@ export async function capturePage(
   } catch (e) {
     console.error(e);
     throw e;
-  } finally {
-    console.debug("closing page");
-    await page.close();
   }
 }
 
 export async function captureSelector(url: string, selector: string) {
-  const page = await createPage(url);
+  await using page = await createPage(url);
 
   try {
     await page.goto(url);
@@ -76,8 +75,5 @@ export async function captureSelector(url: string, selector: string) {
   } catch (e) {
     console.error(e);
     throw e;
-  } finally {
-    console.debug("closing page");
-    await page.close();
   }
 }

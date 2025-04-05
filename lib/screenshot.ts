@@ -1,16 +1,10 @@
-import { Browser, launch, Page } from "astral";
+import { launch, Page } from "astral";
 import { CaptureOptions } from "./screenshotTypes.ts";
 
-let browser: Browser | null = null;
-
-async function createBrowser() {
-  browser ??= await launch({
-    headless: false,
-    userAgent: "Screenshot Service | payload.tf 0.1.0",
-  });
-
-  return browser;
-}
+const browser = await launch({
+  headless: false,
+  userAgent: "Screenshot Service | payload.tf 0.1.0",
+});
 
 export async function generateClipBounds(page: Page, options: CaptureOptions) {
   return await page.evaluate((options) => {
@@ -55,12 +49,22 @@ export async function generateClipBounds(page: Page, options: CaptureOptions) {
   }, { args: [options] });
 }
 
-export async function createOrConnectChrome() {
-  return await createBrowser();
-}
-
 export async function createPage(url: string) {
   const page = await browser!.newPage(url);
 
   return page;
+}
+
+Deno.addSignalListener("SIGINT", async () => {
+  await removeBrowser();
+
+  Deno.exit();
+});
+
+async function removeBrowser() {
+  console.info("closing browser");
+
+  if (!browser?.closed) {
+    await browser?.close();
+  }
 }
