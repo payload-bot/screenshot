@@ -28,4 +28,4 @@ USER deno
 COPY --from=build $DENO_DIR $DENO_DIR
 COPY --from=build /app .
 
-CMD ["deno", "task", "prod"]
+ENTRYPOINT ["deno", "task", "prod"]
