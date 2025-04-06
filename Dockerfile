@@ -6,7 +6,7 @@ USER deno
 
 COPY . .
 
-RUN deno cache main.ts
+RUN deno cache --frozen main.ts
 
 FROM denoland/deno
 
