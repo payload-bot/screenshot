@@ -1,7 +1,7 @@
 app = 'payload-screenshot'
 primary_region = 'ord'
 kill_timeout = 15
-swap_size_mb = 128
+swap_size_mb = 512
 
 [env]
   HEADLESS = "true"
