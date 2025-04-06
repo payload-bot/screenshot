@@ -4,12 +4,8 @@ kill_timeout = 15
 swap_size_mb = 512
 
 [env]
-  HEADLESS = "true"
   OTEL_DENO = true
   OTEL_SERVICE_NAME = 'screenshot'
-
-[processes]
-  app = 'deno task prod'
 
 [[services]]
 internal_port = 8000
