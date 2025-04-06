@@ -11,7 +11,7 @@ export async function capturePage(
 
   let styles;
   if (options.cssPath) {
-    styles = await Deno.readTextFile(options.cssPath!);
+    styles = await Deno.readTextFile(options.cssPath);
   }
 
   try {
