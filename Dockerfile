@@ -1,6 +1,17 @@
-FROM denoland/deno AS builder
+FROM denoland/deno AS build
 
 WORKDIR /app
+
+USER deno
+
+COPY . .
+
+RUN deno cache main.ts
+
+FROM denoland/deno
+
+ENV HEADLESS=true
+ENV CHROME_PATH="/usr/bin/google-chrome-stable"
 
 RUN apt-get update \
     && apt-get install -y wget gnupg \
@@ -9,13 +20,12 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y google-chrome-stable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf libxss1 --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
-    
-COPY . .
-
-RUN deno cache main.ts
-
-FROM builder
 
 WORKDIR /app
+
+USER deno
+
+COPY --from=build $DENO_DIR $DENO_DIR
+COPY --from=build /app .
 
 CMD ["deno", "task", "prod"]

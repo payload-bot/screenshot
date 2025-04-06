@@ -1,11 +1,13 @@
 import { launch, Page } from "astral";
 import { CaptureOptions } from "./screenshotTypes.ts";
 
-const shouldRunHeadless = Deno.env.get("HEADLESS") === "true"
+const shouldRunHeadless = Deno.env.get("HEADLESS") === "true";
+const executablePath = Deno.env.get("CHROME_PATH") ?? "";
 
 const browser = await launch({
   headless: shouldRunHeadless,
   userAgent: "Screenshot Service | payload.tf 0.1.0",
+  path: executablePath,
 });
 
 export async function generateClipBounds(page: Page, options: CaptureOptions) {
