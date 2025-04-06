@@ -13,6 +13,10 @@ const etf2lMatchRoutePattern = new URLPattern({
 const rglTeamRoutePattern = new URLPattern({ pathname: "/v0/rgl/teams" });
 
 Deno.serve(async (req) => {
+  if (req.method === "GET") {
+    return Response.json({ message: "ok" }, {});
+  }
+
   const out = urlBody(await req.json());
 
   if (out instanceof type.errors) {
