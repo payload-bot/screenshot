@@ -17,6 +17,31 @@
 This project is split out from Payload and is intended to provide a set of APIs
 and methods to screenshot popular TF2 websites.
 
+## Running
+
+You can run the service locally using [Deno](https://docs.deno.com/runtime/):
+
+```cmd
+deno task dev
+```
+
+This will install all dependencies, including a chrome browser. If you wish to
+use a local binary for chrome instead, use the `CHROME_DIR` environment flag to the path of the chrome executable.
+
+### Production
+
+This service is ran using Docker. To run locally, first build the service:
+
+```cmd
+docker build . -t "screenshot"
+```
+
+Then run the container:
+
+```cmd
+docker run --name "screenshot" --init -it --rm screenshot
+```
+
 # Issues, Questions
 
 Any issues or questions should be posted on GitHub issues, where they can be
