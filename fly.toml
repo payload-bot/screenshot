@@ -9,7 +9,6 @@ swap_size_mb = 512
 
 [[services]]
 internal_port = 8000
-processes = [ "app" ]
 protocol = "tcp"
 
   [[services.ports]]
@@ -23,11 +22,11 @@ protocol = "tcp"
 [http_service]
 auto_start_machines = true
 auto_stop_machines = true
-force_https = true
+force_https = false
 internal_port = 8000
 min_machines_running = 0
-processes = [ "app" ]
 
 [[vm]]
-  size = 'shared-cpu-1x'
-  memory = "512mb"
+  cpu_kind = "shared"
+  cpus = 1
+  memory = 512
