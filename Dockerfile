@@ -10,6 +10,7 @@ RUN deno cache --frozen main.ts
 
 FROM denoland/deno
 
+EXPOSE 8000
 ENV HEADLESS=true
 ENV CHROME_PATH="/usr/bin/google-chrome-stable"
 
