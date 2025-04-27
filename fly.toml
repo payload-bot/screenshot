@@ -21,7 +21,7 @@ protocol = "tcp"
 
 [http_service]
 auto_start_machines = true
-auto_stop_machines = true
+auto_stop_machines = 'suspend'
 force_https = false
 internal_port = 8000
 min_machines_running = 0
