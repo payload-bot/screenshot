@@ -5,7 +5,7 @@
     "test": "deno test -A"
   },
   "imports": {
-    "arktype": "npm:arktype@^2.1.15",
+    "arktype": "npm:arktype@^2.1.20",
     "astral": "jsr:@astral/astral@^0.5.2"
   },
   "compilerOptions": {
