@@ -12,7 +12,7 @@ const etf2lMatchRoutePattern = new URLPattern({
 });
 const rglTeamRoutePattern = new URLPattern({ pathname: "/v0/rgl/teams" });
 
-Deno.serve(async (req) => {
+Deno.serve({ port: 8000, hostname: "0.0.0.0" }, async (req) => {
   if (req.method === "GET") {
     return Response.json({ message: "ok" }, {});
   }
