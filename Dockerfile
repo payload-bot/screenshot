@@ -1,4 +1,4 @@
-FROM denoland/deno:2.3.5 AS build
+FROM denoland/deno:ubuntu-2.5.0 AS build
 
 WORKDIR /app
 
@@ -8,7 +8,7 @@ COPY . .
 
 RUN deno cache --frozen main.ts
 
-FROM denoland/deno:2.3.5
+FROM denoland/deno:ubuntu-2.5.0
 
 EXPOSE 8000
 ENV HEADLESS=true

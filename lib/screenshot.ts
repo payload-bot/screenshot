@@ -54,7 +54,7 @@ export async function generateClipBounds(page: Page, options: CaptureOptions) {
 }
 
 export async function createPage(url: string) {
-  const page = await browser!.newPage(url);
+  const page = await browser.newPage(url);
 
   return page;
 }
