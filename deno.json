@@ -6,7 +6,7 @@
   },
   "imports": {
     "arktype": "npm:arktype@^2.1.22",
-    "astral": "jsr:@astral/astral@^0.5.3"
+    "astral": "jsr:@astral/astral@^0.5.4"
   },
   "compilerOptions": {
     "lib": ["deno.window", "dom"],
