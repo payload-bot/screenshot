@@ -26,7 +26,8 @@ deno task dev
 ```
 
 This will install all dependencies, including a chrome browser. If you wish to
-use a local binary for chrome instead, use the `CHROME_PATH` environment flag to the path of the chrome executable.
+use a local binary for chrome instead, use the `CHROME_PATH` environment flag to
+the path of the chrome executable.
 
 ### Production
 

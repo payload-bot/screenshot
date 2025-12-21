@@ -5,11 +5,14 @@
     "test": "deno test -A"
   },
   "imports": {
-    "arktype": "npm:arktype@^2.1.25",
-    "astral": "jsr:@astral/astral@^0.5.4"
+    "arktype": "npm:arktype@^2.1.29",
+    "astral": "jsr:@astral/astral@^0.5.5"
   },
   "compilerOptions": {
-    "lib": ["deno.window", "dom"],
+    "lib": [
+      "deno.window",
+      "dom"
+    ],
     "strict": true,
     "strictNullChecks": true,
     "exactOptionalPropertyTypes": true

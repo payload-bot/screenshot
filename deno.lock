@@ -1,10 +1,9 @@
 {
   "version": "5",
   "specifiers": {
-    "jsr:@astral/astral@~0.5.4": "0.5.4",
+    "jsr:@astral/astral@~0.5.5": "0.5.5",
     "jsr:@deno-library/progress@^1.5.1": "1.5.1",
     "jsr:@deno/cache-dir@0.22.2": "0.22.2",
-    "jsr:@deno/graph@0.86": "0.86.9",
     "jsr:@std/async@1": "1.0.15",
     "jsr:@std/bytes@^1.0.2": "1.0.6",
     "jsr:@std/encoding@1": "1.0.10",
@@ -17,13 +16,13 @@
     "jsr:@std/io@0.225.0": "0.225.0",
     "jsr:@std/path@1": "1.1.2",
     "jsr:@std/path@^1.0.8": "1.1.2",
-    "jsr:@zip-js/zip-js@^2.7.52": "2.8.2",
+    "jsr:@zip-js/zip-js@^2.7.52": "2.8.8",
     "npm:@types/node@*": "22.10.7",
-    "npm:arktype@^2.1.25": "2.1.25"
+    "npm:arktype@^2.1.29": "2.1.29"
   },
   "jsr": {
-    "@astral/astral@0.5.4": {
-      "integrity": "b720d12fe3d0f997974e0abe6b87ade2ce6ef2c76701e9984eb7e53601faa887",
+    "@astral/astral@0.5.5": {
+      "integrity": "01b258a7021556f2af8526903320ea90ee5f6045771e6091529fce7822550dcb",
       "dependencies": [
         "jsr:@deno-library/progress",
         "jsr:@deno/cache-dir",
@@ -44,15 +43,11 @@
     "@deno/cache-dir@0.22.2": {
       "integrity": "0c84b8db6175618cc2e25ed7d7648d83b38e298c14c1aae1e4b4e1b2219b840c",
       "dependencies": [
-        "jsr:@deno/graph",
         "jsr:@std/fmt@^1.0.3",
         "jsr:@std/fs@^1.0.6",
         "jsr:@std/io@0.225",
         "jsr:@std/path@^1.0.8"
       ]
-    },
-    "@deno/graph@0.86.9": {
-      "integrity": "c4f353a695bcc5246c099602977dabc6534eacea9999a35a8cb24e807192e6a1"
     },
     "@std/async@1.0.15": {
       "integrity": "55d1d9d04f99403fe5730ab16bdcc3c47f658a6bf054cafb38a50f046238116e"
@@ -84,19 +79,19 @@
         "jsr:@std/internal"
       ]
     },
-    "@zip-js/zip-js@2.8.2": {
-      "integrity": "e25fb34fe2d8fbae9ebf08b550200f3f199a2a41c9420c4d1405b79053efe73a"
+    "@zip-js/zip-js@2.8.8": {
+      "integrity": "d02be7ef8707977e714cd24e045882f0b396dbcecfcabd7b591c5cdba40e47b7"
     }
   },
   "npm": {
-    "@ark/schema@0.53.0": {
-      "integrity": "sha512-1PB7RThUiTlmIu8jbSurPrhHpVixPd4C+xNBUF/HrjIENCeDcAMg36n5mpMzED7OQGDVIzpfXXiMnaTiutjHJw==",
+    "@ark/schema@0.56.0": {
+      "integrity": "sha512-ECg3hox/6Z/nLajxXqNhgPtNdHWC9zNsDyskwO28WinoFEnWow4IsERNz9AnXRhTZJnYIlAJ4uGn3nlLk65vZA==",
       "dependencies": [
         "@ark/util"
       ]
     },
-    "@ark/util@0.53.0": {
-      "integrity": "sha512-TGn4gLlA6dJcQiqrtCtd88JhGb2XBHo6qIejsDre+nxpGuUVW4G3YZGVrwjNBTO0EyR+ykzIo4joHJzOj+/cpA=="
+    "@ark/util@0.56.0": {
+      "integrity": "sha512-BghfRC8b9pNs3vBoDJhcta0/c1J1rsoS1+HgVUreMFPdhz/CRAKReAu57YEllNaSy98rWAdY1gE+gFup7OXpgA=="
     },
     "@types/node@22.10.7": {
       "integrity": "sha512-V09KvXxFiutGp6B7XkpaDXlNadZxrzajcY50EuoLIpQ6WWYCSvf19lVIazzfIzQvhUN2HjX12spLojTnhuKlGg==",
@@ -104,14 +99,14 @@
         "undici-types"
       ]
     },
-    "arkregex@0.0.2": {
-      "integrity": "sha512-ttjDUICBVoXD/m8bf7eOjx8XMR6yIT2FmmW9vsN0FCcFOygEZvvIX8zK98tTdXkzi0LkRi5CmadB44jFEIyDNA==",
+    "arkregex@0.0.5": {
+      "integrity": "sha512-ncYjBdLlh5/QnVsAA8De16Tc9EqmYM7y/WU9j+236KcyYNUXogpz3sC4ATIZYzzLxwI+0sEOaQLEmLmRleaEXw==",
       "dependencies": [
         "@ark/util"
       ]
     },
-    "arktype@2.1.25": {
-      "integrity": "sha512-fdj10sNlUPeDRg1QUqMbzJ4Q7gutTOWOpLUNdcC4vxeVrN0G+cbDOvLbuxQOFj/NDAode1G7kwFv4yKwQvupJg==",
+    "arktype@2.1.29": {
+      "integrity": "sha512-jyfKk4xIOzvYNayqnD8ZJQqOwcrTOUbIU4293yrzAjA3O1dWh61j71ArMQ6tS/u4pD7vabSPe7nG3RCyoXW6RQ==",
       "dependencies": [
         "@ark/schema",
         "@ark/util",
@@ -124,8 +119,8 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@astral/astral@~0.5.4",
-      "npm:arktype@^2.1.25"
+      "jsr:@astral/astral@~0.5.5",
+      "npm:arktype@^2.1.29"
     ]
   }
 }
