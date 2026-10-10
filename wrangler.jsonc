@@ -18,5 +18,14 @@
   "upload_source_maps": true,
   "browser": {
     "binding": "BROWSER",
-  }
+  },
+  "rules": [
+    {
+      "type": "Text",
+      "globs": [
+        "**/*.css"
+      ],
+      "fallthrough": true
+    }
+  ]
 }
