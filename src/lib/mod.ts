@@ -34,7 +34,7 @@ export async function capturePage(
     const screenshotBuffer = await page.screenshot({
       clip: { ...clip, scale: 1 },
       captureBeyondViewport: true,
-      type: "jpeg"
+      type: "webp"
     });
 
     console.debug("done");
@@ -54,7 +54,7 @@ export async function captureSelector(url: string, selector: string) {
 
     const element = await page.waitForSelector(selector);
 
-    const screenshot = await element!.screenshot({ type: "jpeg" });
+    const screenshot = await element!.screenshot({ type: "webp" });
 
     console.info("done");
     return screenshot;

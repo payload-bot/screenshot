@@ -3,7 +3,9 @@ import puppeteer, { Page } from "@cloudflare/puppeteer";
 import { CaptureOptions } from "./screenshotTypes.ts";
 
 export async function generateClipBounds(page: Page, options: CaptureOptions) {
-  return await page.evaluate((options) => {
+  return await page.evaluate((args) => {
+    const options = args.args;
+
     const bounds = {
       x: 0,
       y: 0,
@@ -42,7 +44,7 @@ export async function generateClipBounds(page: Page, options: CaptureOptions) {
     }
 
     return bounds;
-  }, { args: [options] });
+  }, { args: options });
 }
 
 export async function createPage(url: string) {
@@ -51,7 +53,7 @@ export async function createPage(url: string) {
 
   await page.setViewport({ width: 1080, height: 1920, deviceScaleFactor: 1 });
   await page.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36")
-  await page.goto(url, { waitUntil: "networkidle0" });
+  await page.goto(url, { waitUntil: "networkidle2" });
 
   return page;
 }
