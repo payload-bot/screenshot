@@ -1,14 +1,6 @@
-import { launch, Page } from "astral";
+import { env } from "cloudflare:workers";
+import puppeteer, { Page } from "@cloudflare/puppeteer";
 import { CaptureOptions } from "./screenshotTypes.ts";
-
-const shouldRunHeadless = Deno.env.get("HEADLESS") === "true";
-const executablePath = Deno.env.get("CHROME_PATH") ?? "";
-
-const browser = await launch({
-  headless: shouldRunHeadless,
-  userAgent: "Screenshot Service | payload.tf 0.1.0",
-  path: executablePath,
-});
 
 export async function generateClipBounds(page: Page, options: CaptureOptions) {
   return await page.evaluate((options) => {
@@ -54,21 +46,9 @@ export async function generateClipBounds(page: Page, options: CaptureOptions) {
 }
 
 export async function createPage(url: string) {
+  const browser = await puppeteer.launch(env.BROWSER);
   const page = await browser.newPage(url);
 
   return page;
 }
 
-Deno.addSignalListener("SIGINT", async () => {
-  await removeBrowser();
-
-  Deno.exit();
-});
-
-async function removeBrowser() {
-  console.info("closing browser");
-
-  if (!browser?.closed) {
-    await browser?.close();
-  }
-}

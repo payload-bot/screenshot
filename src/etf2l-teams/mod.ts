@@ -1,4 +1,4 @@
-import { captureSelector } from "../../lib/mod.ts";
+import { captureSelector } from "../lib/mod.js";
 
 const etf2lHost = "etf2l.org";
 const teamsPrefix = "/teams/";

@@ -1,3 +1,5 @@
+import { URL } from "node:url";
+
 export type ElementBasedBound = {
   selector: string;
   edge: "top" | "bottom" | "left" | "right";
@@ -5,11 +7,11 @@ export type ElementBasedBound = {
 
 export interface CaptureOptions {
   [index: string]:
-    | string
-    | number
-    | Array<string>
-    | ElementBasedBound
-    | undefined;
+  | string
+  | number
+  | Array<string>
+  | ElementBasedBound
+  | undefined;
 
   waitFor?: string | Array<string>;
   top: number | ElementBasedBound;

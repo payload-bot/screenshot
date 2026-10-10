@@ -1,4 +1,4 @@
-import { capturePage } from "../../lib/mod.ts";
+import { capturePage } from "../lib/mod.js";
 
 const rglHost = "rgl.gg";
 const matchRegex = /rgl\.gg\/Public\/Team(\.aspx)*\?t=\d+\&r=\d+/;

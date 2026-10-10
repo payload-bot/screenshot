@@ -1,6 +1,6 @@
-import { capturePage } from "../../lib/mod.ts";
-
-const logsCssPath = await Deno.realPath("./logs.css");
+import { capturePage } from "../lib/mod.ts";
+import { URL } from "node:url";
+import logsCss from "./logs.css";
 
 const logsTfHost = "logs.tf";
 
@@ -42,7 +42,7 @@ export default async function logstfRoute(url: URL) {
       edge: "bottom",
     },
 
-    cssPath: logsCssPath,
+    cssPath: logsCss,
   });
 
   return new Response(screenshotBuffer, {
