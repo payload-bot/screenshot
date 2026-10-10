@@ -17,30 +17,20 @@
 This project is split out from Payload and is intended to provide a set of APIs
 and methods to screenshot popular TF2 websites.
 
+## Install
+
+Install using `pnpm`:
+
+```cmd
+pnpm install
+```
+
 ## Running
 
-You can run the service locally using [Deno](https://docs.deno.com/runtime/):
+You can run the service locally using wranger:
 
 ```cmd
-deno task dev
-```
-
-This will install all dependencies, including a chrome browser. If you wish to
-use a local binary for chrome instead, use the `CHROME_PATH` environment flag to
-the path of the chrome executable.
-
-### Production
-
-This service is ran using Docker. To run locally, first build the service:
-
-```cmd
-docker build . -t "screenshot"
-```
-
-Then run the container:
-
-```cmd
-docker run --name "screenshot" --init -it --rm screenshot
+pnpm run dev
 ```
 
 # Issues, Questions
@@ -58,8 +48,7 @@ medium.
 
 Before contributing, please make sure no one else has stated against your
 proposal. Otherwise, make a Pull Request detailing your proposal and any
-relevant code changes. If you are committing code, try to create test cases, as
-going foward we'd like to have stable tests.
+relevant code changes.
 
 # Useful Links
 
@@ -67,15 +56,6 @@ going foward we'd like to have stable tests.
 - [Invite](https://payload.tf/invite)
 - [Discord](https://payload.tf/discord)
 - [Translation](https://crowdin.com/project/payload)
-
-# OpenTelemetry
-
-You can use the following command for debugging and tracing using the Grafana
-LGTM stack:
-
-```cmd
-docker run --name lgtm -p 3000:3000 -p 4317:4317 -p 4318:4318 --rm -ti -v ${PWD}/lgtm/grafana:/data/grafana -v ${PWD}/lgtm/prometheus:/data/prometheus -v ${PWD}/lgtm/loki:/data/loki -e GF_PATHS_DATA=/data/grafana docker.io/grafana/otel-lgtm:0.9.1
-```
 
 # License
 
