@@ -9,28 +9,13 @@ export async function capturePage(
 
   const page = await createPage(url);
 
-  let styles;
-  if (options.cssPath) {
-    styles = options.cssPath;
-  }
-
   try {
-    if (styles) {
+    if (options.cssPath) {
       console.debug("inserting styles");
 
-      await page.evaluate(async (styles) => {
-        const style = document.createElement("style");
-        style.appendChild(document.createTextNode(styles));
-
-        const promise = new Promise((resolve, reject) => {
-          style.onload = resolve;
-          style.onerror = reject;
-        });
-
-        document.head.appendChild(style);
-
-        await promise;
-      }, { args: [styles] });
+      await page.addStyleTag({
+        content: options.cssPath
+      });
     }
 
     if (options.waitFor) {
@@ -49,13 +34,13 @@ export async function capturePage(
     const screenshotBuffer = await page.screenshot({
       clip: { ...clip, scale: 1 },
       captureBeyondViewport: true,
-      type: "webp"
+      type: "jpeg"
     });
 
     console.debug("done");
     return screenshotBuffer;
   } catch (e) {
-    page.close();
+    await page.close();
     console.error(e);
     throw e;
   }
@@ -69,12 +54,12 @@ export async function captureSelector(url: string, selector: string) {
 
     const element = await page.waitForSelector(selector);
 
-    const screenshot = await element!.screenshot({ type: "webp" });
+    const screenshot = await element!.screenshot({ type: "jpeg" });
 
     console.info("done");
     return screenshot;
   } catch (e) {
-    page.close();
+    await page.close();
     console.error(e);
     throw e;
   }

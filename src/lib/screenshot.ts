@@ -47,7 +47,11 @@ export async function generateClipBounds(page: Page, options: CaptureOptions) {
 
 export async function createPage(url: string) {
   const browser = await puppeteer.launch(env.BROWSER);
-  const page = await browser.newPage(url);
+  const page = await browser.newPage();
+
+  await page.setViewport({ width: 1080, height: 1920, deviceScaleFactor: 1 });
+  await page.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36")
+  await page.goto(url, { waitUntil: "networkidle0" });
 
   return page;
 }
