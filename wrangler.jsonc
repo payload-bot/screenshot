@@ -23,6 +23,9 @@
     "cross_version_cache": true,
     "enabled": true,
   },
+  "assets": {
+    "directory": "./public"
+  },
   "rules": [
     {
       "type": "Text",
