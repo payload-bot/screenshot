@@ -12,6 +12,7 @@
     "nodejs_compat",
     "new_module_registry"
   ],
+  "workers_dev": false,
   "observability": {
     "enabled": false,
   },
