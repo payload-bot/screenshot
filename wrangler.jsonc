@@ -1,0 +1,31 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "payload-screenshot",
+  "main": "./src/index.ts",
+  "compatibility_date": "2026-10-06",
+  "compatibility_flags": [
+    "global_fetch_strictly_public",
+    "nodejs_compat",
+    "new_module_registry"
+  ],
+  "observability": {
+    "enabled": true
+  },
+  "upload_source_maps": true,
+  "browser": {
+    "binding": "BROWSER",
+  },
+  "rules": [
+    {
+      "type": "Text",
+      "globs": [
+        "**/*.css"
+      ],
+      "fallthrough": true
+    }
+  ]
+}

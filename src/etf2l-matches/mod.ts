@@ -1,4 +1,4 @@
-import { capturePage } from "../../lib/mod.ts";
+import { capturePage } from "../lib/mod.js";
 
 const etf2lHost = "etf2l.org";
 const matchesPrefix = "/matches/";

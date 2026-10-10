@@ -7,30 +7,15 @@ export async function capturePage(
 ): Promise<Uint8Array> {
   console.info(`creating page for ${url}`);
 
-  await using page = await createPage(url);
-
-  let styles;
-  if (options.cssPath) {
-    styles = await Deno.readTextFile(options.cssPath);
-  }
+  const page = await createPage(url);
 
   try {
-    if (styles) {
+    if (options.cssPath) {
       console.debug("inserting styles");
 
-      await page.evaluate(async (styles) => {
-        const style = document.createElement("style");
-        style.appendChild(document.createTextNode(styles));
-
-        const promise = new Promise((resolve, reject) => {
-          style.onload = resolve;
-          style.onerror = reject;
-        });
-
-        document.head.appendChild(style);
-
-        await promise;
-      }, { args: [styles] });
+      await page.addStyleTag({
+        content: options.cssPath
+      });
     }
 
     if (options.waitFor) {
@@ -49,30 +34,32 @@ export async function capturePage(
     const screenshotBuffer = await page.screenshot({
       clip: { ...clip, scale: 1 },
       captureBeyondViewport: true,
-      format: "webp",
+      type: "webp"
     });
 
     console.debug("done");
     return screenshotBuffer;
   } catch (e) {
+    await page.close();
     console.error(e);
     throw e;
   }
 }
 
 export async function captureSelector(url: string, selector: string) {
-  await using page = await createPage(url);
+  const page = await createPage(url);
 
   try {
     await page.goto(url);
 
     const element = await page.waitForSelector(selector);
 
-    const screenshot = await element.screenshot({ format: "webp" });
+    const screenshot = await element!.screenshot({ type: "webp" });
 
     console.info("done");
     return screenshot;
   } catch (e) {
+    await page.close();
     console.error(e);
     throw e;
   }
