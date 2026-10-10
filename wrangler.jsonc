@@ -13,11 +13,15 @@
     "new_module_registry"
   ],
   "observability": {
-    "enabled": true
+    "enabled": false,
   },
   "upload_source_maps": true,
   "browser": {
     "binding": "BROWSER",
+  },
+  "cache": {
+    "cross_version_cache": true,
+    "enabled": true,
   },
   "rules": [
     {
