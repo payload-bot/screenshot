@@ -52,7 +52,7 @@ export async function createPage(url: string) {
   const page = await browser.newPage();
 
   await page.setViewport({ width: 1080, height: 1920, deviceScaleFactor: 1 });
-  await page.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36")
+  await page.setUserAgent("Screenshot Service | payload.tf 1.0.0")
   await page.goto(url, { waitUntil: "networkidle2" });
 
   return page;
