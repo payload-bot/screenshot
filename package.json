@@ -1,6 +1,6 @@
 {
-  "name": "raspy-bread-d872",
-  "version": "0.0.0",
+  "name": "payload-screenshot",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "deploy": "wrangler deploy",
