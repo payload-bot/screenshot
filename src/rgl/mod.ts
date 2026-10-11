@@ -1,25 +1,24 @@
+import { sValidator } from "@hono/standard-validator";
 import { capturePage } from "../lib/mod.js";
+import { urlSchema } from "../lib/types.js";
+import { Hono } from "hono";
 
 const rglHost = "rgl.gg";
 const matchRegex = /rgl\.gg\/Public\/Team(\.aspx)*\?t=\d+\&r=\d+/;
 
-export default async function rglTeamRoute(url: URL) {
+const app = new Hono();
+
+app.get("/matches", sValidator('query', urlSchema), async (c) => {
+  const url = c.req.valid('query').url;
+
   if (url.host !== rglHost) {
-    return Response.json({
-      message: "Invalid rgl url",
-    }, {
-      status: 400,
-    });
+    return c.json({ message: "Invalid rgl url" }, 400);
   }
 
   const isRglUrl = matchRegex.test(url.href);
 
   if (!isRglUrl) {
-    return Response.json({
-      message: "Invalid rgl url",
-    }, {
-      status: 400,
-    });
+    return c.json({ message: "Invalid rgl url" }, 400);
   }
 
   const screenshotBuffer = await capturePage(
@@ -50,6 +49,10 @@ export default async function rglTeamRoute(url: URL) {
   return new Response(screenshotBuffer, {
     headers: {
       "Content-Type": "image/webp",
+      "Cache-Tag": `previews,host:rgl`,
+      "Cache-Control": "public, max-age=31536000",
     },
   });
-}
+});
+
+export default app;

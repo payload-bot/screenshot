@@ -1,27 +1,25 @@
+import { Hono } from "hono";
 import { capturePage } from "../lib/mod.ts";
-import { URL } from "node:url";
 import logsCss from "./logs.css";
+import { sValidator } from "@hono/standard-validator";
+import { urlSchema } from "../lib/types.ts";
 
 const logsTfHost = "logs.tf";
 
-export default async function logstfRoute(url: URL) {
+const app = new Hono();
+
+app.get("/", sValidator('query', urlSchema), async (c) => {
+  const url = c.req.valid('query').url;
+
   if (url.host !== logsTfHost) {
-    return Response.json({
-      message: "Invalid log url",
-    }, {
-      status: 400,
-    });
+    c.json({ message: "Invalid log url" }, 400);
   }
 
   const logIdString = url.pathname.slice(1).trim();
   const logId = Number(logIdString);
 
   if (isNaN(logId) && !isFinite(logId)) {
-    return Response.json({
-      message: "Invalid log url",
-    }, {
-      status: 400,
-    });
+    c.json({ message: "Invalid log url" }, 400);
   }
 
   const screenshotBuffer = await capturePage(url.href, {
@@ -48,6 +46,10 @@ export default async function logstfRoute(url: URL) {
   return new Response(screenshotBuffer, {
     headers: {
       "Content-Type": "image/webp",
-    },
+      "Cache-Tag": `previews,host:logstf`,
+      "Cache-Control": "public, max-age=31536000",
+    }
   });
-}
+});
+
+export default app;
