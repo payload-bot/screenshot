@@ -1,5 +1,3 @@
-import { URL } from "node:url";
-
 export type ElementBasedBound = {
   selector: string;
   edge: "top" | "bottom" | "left" | "right";
