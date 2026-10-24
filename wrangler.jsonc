@@ -6,7 +6,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "payload-screenshot",
   "main": "./src/index.ts",
-  "compatibility_date": "2026-10-06",
+  "compatibility_date": "2026-10-24",
   "compatibility_flags": [
     "global_fetch_strictly_public",
     "nodejs_compat",
