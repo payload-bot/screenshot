@@ -40,5 +40,19 @@
       ],
       "fallthrough": true
     }
+  ],
+  "routes": [
+    {
+      "pattern": "screenshot.payload.tf",
+      "custom_domain": true,
+      "enabled": true,
+      "previews_enabled": false
+    },
+    {
+      "pattern": "screenshot-dev.payload.tf",
+      "custom_domain": true,
+      "enabled": false,
+      "previews_enabled": true
+    }
   ]
 }

@@ -2,7 +2,7 @@
   "name": "payload-screenshot",
   "version": "1.0.0",
   "private": true,
-  "packageManager": "pnpm@12.11.2",
+  "packageManager": "pnpm@12.15.0",
   "scripts": {
     "deploy": "wrangler deploy",
     "dev": "wrangler dev",
@@ -14,11 +14,11 @@
     "@cloudflare/puppeteer": "^1.4.0",
     "@types/node": "^26.6.5",
     "typescript": "^5.5.2",
-    "wrangler": "^4.149.0"
+    "wrangler": "^4.152.0"
   },
   "dependencies": {
     "@hono/standard-validator": "^0.4.0",
-    "arktype": "^2.2.8",
+    "arktype": "^2.2.9",
     "hono": "^4.13.13"
   }
 }
