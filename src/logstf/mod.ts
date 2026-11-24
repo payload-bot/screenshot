@@ -8,8 +8,8 @@ const logsTfHost = "logs.tf";
 
 const app = new Hono();
 
-app.get("/", sValidator('query', urlSchema), async (c) => {
-  const url = c.req.valid('query').url;
+app.get("/", sValidator("query", urlSchema), async (c) => {
+  const url = c.req.valid("query").url;
 
   if (url.host !== logsTfHost) {
     c.json({ message: "Invalid log url" }, 400);
@@ -48,7 +48,7 @@ app.get("/", sValidator('query', urlSchema), async (c) => {
       "Content-Type": "image/webp",
       "Cache-Tag": `previews,host:logstf`,
       "Cache-Control": "public, max-age=31536000",
-    }
+    },
   });
 });
 

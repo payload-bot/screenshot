@@ -4,7 +4,7 @@ import { CaptureOptions } from "./screenshotTypes.ts";
 export async function capturePage(
   url: string,
   options: CaptureOptions = { left: 0, top: 0 },
-): Promise<Uint8Array> {
+): Promise<ArrayBuffer> {
   console.info(`creating page for ${url}`);
 
   const page = await createPage(url);
@@ -14,16 +14,14 @@ export async function capturePage(
       console.debug("inserting styles");
 
       await page.addStyleTag({
-        content: options.cssPath
+        content: options.cssPath,
       });
     }
 
     if (options.waitFor) {
       console.debug("waiting for selectors");
       if (Array.isArray(options.waitFor)) {
-        await Promise.all(
-          options.waitFor.map((selector) => page.waitForSelector(selector)),
-        );
+        await Promise.all(options.waitFor.map((selector) => page.waitForSelector(selector)));
       } else {
         await page.waitForSelector(options.waitFor);
       }
@@ -34,11 +32,11 @@ export async function capturePage(
     const screenshotBuffer = await page.screenshot({
       clip: { ...clip, scale: 1 },
       captureBeyondViewport: true,
-      type: "webp"
+      type: "webp",
     });
 
     console.debug("done");
-    return screenshotBuffer;
+    return screenshotBuffer.buffer as ArrayBuffer;
   } catch (e) {
     await page.close();
     console.error(e);
