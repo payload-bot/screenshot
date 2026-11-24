@@ -1,5 +1,6 @@
 import logstfRoutes from "./logstf/mod";
 import etf2lRoutes from "./etf2l/mod";
+//import rglRoutes from "./rgl/mod";
 import { Hono } from "hono";
 import { basicAuth } from "hono/basic-auth";
 
@@ -14,5 +15,6 @@ if (process.env.NODE_ENV === "production") {
 
 app.route("/logstf", logstfRoutes);
 app.route("/etf2l", etf2lRoutes);
+//app.route("/rgl", rglRoutes);
 
 export default app;
