@@ -2,7 +2,7 @@
   "name": "payload-screenshot",
   "version": "1.0.0",
   "private": true,
-  "packageManager": "pnpm@12.15.0",
+  "packageManager": "pnpm@12.23.0",
   "scripts": {
     "deploy": "wrangler deploy",
     "dev": "wrangler dev",
@@ -11,14 +11,14 @@
     "cf-typegen": "wrangler types"
   },
   "devDependencies": {
-    "@cloudflare/puppeteer": "^1.4.0",
-    "@types/node": "^26.6.5",
-    "typescript": "^5.5.2",
-    "wrangler": "^4.152.0"
+    "@cloudflare/puppeteer": "^2.0.1",
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.168.0"
   },
   "dependencies": {
-    "@hono/standard-validator": "^0.4.0",
-    "arktype": "^2.2.9",
-    "hono": "^4.13.13"
+    "@hono/standard-validator": "^0.4.1",
+    "arktype": "^2.2.10",
+    "hono": "^4.13.21"
   }
 }
