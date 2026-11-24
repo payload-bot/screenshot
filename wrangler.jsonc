@@ -7,15 +7,14 @@
   "name": "payload-screenshot",
   "main": "./src/index.ts",
   "compatibility_date": "2026-10-24",
-  "compatibility_flags": [
-    "global_fetch_strictly_public",
-    "nodejs_compat",
-    "new_module_registry"
-  ],
+  "compatibility_flags": ["global_fetch_strictly_public", "nodejs_compat", "new_module_registry"],
   "previews": {
     "browser": {
-      "binding": "BROWSER"
+      "binding": "BROWSER",
     },
+  },
+  "vars": {
+    "NODE_ENV": "production",
   },
   "workers_dev": false,
   "observability": {
@@ -30,29 +29,27 @@
     "enabled": true,
   },
   "assets": {
-    "directory": "./public"
+    "directory": "./public",
   },
   "rules": [
     {
       "type": "Text",
-      "globs": [
-        "**/*.css"
-      ],
-      "fallthrough": true
-    }
+      "globs": ["**/*.css"],
+      "fallthrough": true,
+    },
   ],
   "routes": [
     {
       "pattern": "screenshot.payload.tf",
       "custom_domain": true,
       "enabled": true,
-      "previews_enabled": false
+      "previews_enabled": false,
     },
     {
       "pattern": "screenshot-dev.payload.tf",
       "custom_domain": true,
       "enabled": false,
-      "previews_enabled": true
-    }
-  ]
+      "previews_enabled": true,
+    },
+  ],
 }

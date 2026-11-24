@@ -5,12 +5,14 @@ import { basicAuth } from "hono/basic-auth";
 
 export const app = new Hono<{ Bindings: CloudflareBindings }>().basePath("/v1");
 
-const username = process.env.BASIC_AUTH_USERNAME!;
-const password = process.env.BASIC_AUTH_PASSWORD!;
+if (process.env.NODE_ENV === "production") {
+  const username = process.env.BASIC_AUTH_USERNAME!;
+  const password = process.env.BASIC_AUTH_PASSWORD!;
 
-app.use(basicAuth({ username, password }));
-app.route("/logstf", logstfRoutes)
-app.route("/etf2l", etf2lRoutes)
+  app.use(basicAuth({ username, password }));
+}
+
+app.route("/logstf", logstfRoutes);
+app.route("/etf2l", etf2lRoutes);
 
 export default app;
-
